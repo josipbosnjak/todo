@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>todo</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="custom.css">
+    </head>
+    <body>
+
+        <form id="menu">
+            <button type="submit" class="btn btn-info newitem">NEW</button>
+            <input type="hidden" name="id">
+            Name: <input type="text" name="name">
+            Price: <input type="text" name="price">
+
+        </form>
+        <div id ="todo">
+            <div id="new" class="droppable col-sm-4 col-md-4 col-lg-4">NEW</div>
+            <div id="working" class="droppable col-sm-4 col-md-4 col-lg-4">WORKING</div>
+            <div id="save" class="droppable col-sm-4 col-md-4 col-lg-4">SAVE</div>
+        </div>
+
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="test.js"></script>
+    </body>
+</html>
