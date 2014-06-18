@@ -8,22 +8,22 @@ $(document).ready(function() {
             var obj = $.parseJSON(data);
 
             $.each(obj, function() {
-                var $element = $('<div class="ui-widget-content draggable" id="' + this['id'] + '">').html('Name: ' + this['name'] + '<br>' + 'Price: ' + this['price']);
-                var $remove = $('<a id="delete" class="glyphicon glyphicon-remove">');
+                var $element = $('<div class="ui-widget-content draggable" id="' + this['id'] + '">').html('Name: ' + this['name'] + '<br>' + 'Price: ' + this['price'] + '<a class="glyphicon glyphicon-remove delete"></a>');
+                //var $remove = $('<a id="delete" class="glyphicon glyphicon-remove">');
                 $('#' + this['category']).append($element);
-                $element.append($remove);
-                $remove.position({
-                    of: $remove.parent(),
-                    my: 'right top',
-                    at: 'right top'
-                });
-                $element.draggable();
+                //$element.append($remove);
+//                $remove.position({
+//                    of: $remove.parent(),
+//                    my: 'right top',
+//                    at: 'right top'
+//                });
+                $element.draggable({ revert: "invalid" });
             });
         }
     });
 
 
-    $(".draggable").draggable();
+     
     $(".droppable").droppable({
         drop: function(event, ui) {
             $(ui.draggable).detach().css({top: 0, left: 0}).appendTo(this);
@@ -35,7 +35,10 @@ $(document).ready(function() {
                 data: $(this).serialize() + "&category=" + category + "&elementId=" + elementId
             });
         }
+        
+        
     });
+    
 
     $("form").submit(function(event) {
         var dataArray = $(this).serializeArray();
@@ -50,23 +53,23 @@ $(document).ready(function() {
             async: false
         });
 
-        var $element = $('<div class="ui-widget-content draggable" id="' + elementId + '">').html('Name: ' + dataArray[1].value + '<br>' + 'Price: ' + dataArray[2].value);
-        var $remove = $('<a id="delete" class="glyphicon glyphicon-remove">');
+        var $element = $('<div class="ui-widget-content draggable" id="' + elementId + '">').html('Name: ' + dataArray[1].value + '<br>' + 'Price: ' + dataArray[2].value + '<a class="glyphicon glyphicon-remove delete"></a>');
+        //var $remove = $('<a id="delete" class="glyphicon glyphicon-remove">');
 
         $("#new").append($element);
-        $element.draggable();
-        $element.append($remove);
-        $remove.position({
-            of: $remove.parent(),
-            my: 'right top',
-            at: 'right top',
-        });
+        $element.draggable({ revert: "invalid" });
+//        $element.append($remove);
+//        $remove.position({
+//            of: $remove.parent(),
+//            my: 'right top',
+//            at: 'right top',
+//        });
         event.preventDefault();
         $(".droppable").css("height", "+=50");
 
     });
 
-    $(document).on("click", '#delete', function(e) {
+    $(document).on("click", '.delete', function(e) {
         $(this).parent().remove();
         var deleteId = $(this).parent().attr("id");
         $.ajax({

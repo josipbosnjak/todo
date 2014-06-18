@@ -12,3 +12,8 @@
     margin: 10px;
     border: 1px solid black;
 }
+.delete {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+}
