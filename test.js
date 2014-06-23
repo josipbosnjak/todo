@@ -34,6 +34,8 @@ $(document).ready(function() {
                 type: "post",
                 data: $(this).serialize() + "&category=" + category + "&elementId=" + elementId
             });
+            
+            console.log($(this).serialize());
         }
         
         
